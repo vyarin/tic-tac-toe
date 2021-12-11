@@ -1,7 +1,7 @@
 import keyboard
+import os
 import re
 import sys
-import os
 from time import sleep
 
 X = "X"
