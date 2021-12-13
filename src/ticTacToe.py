@@ -55,11 +55,12 @@ def main():
                 TERMINAL_COLUMNS))
 
         while not computerMode:
-            if keyboard.is_pressed("e"):
+            key = keyboard.read_key(suppress=True)
+            if key == "e":
                 computerMode = 3
-            elif keyboard.is_pressed("m"):
+            elif key == "m":
                 computerMode = 5
-            elif keyboard.is_pressed("h"):
+            elif key == "h":
                 computerMode = 9
 
     if mode == "P":
@@ -103,9 +104,10 @@ def playerVsComputer(mode):
 
     # Prompt user for choice of player
     while not firstPlayer:
-        if keyboard.is_pressed("x"):
+        key = keyboard.read_key(suppress=True)
+        if key == "x":
             firstPlayer = X
-        elif keyboard.is_pressed("o"):
+        elif key == "o":
             firstPlayer = O
 
     # Initiate and display tic-tac-toe grid
@@ -657,8 +659,10 @@ def playAgain():
         print(line.center(TERMINAL_COLUMNS))
 
     # Wait for player to input response
-    while not keyboard.is_pressed("y"):
-        if keyboard.is_pressed("escape"):
+    key = keyboard.read_key(suppress=True)
+    while key != "y":
+        key = keyboard.read_key(suppress=True)
+        if key == "escape":
             # clear screen
             return False
     return True
