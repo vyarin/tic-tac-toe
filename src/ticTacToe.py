@@ -25,12 +25,14 @@ def main():
 
     # Check for player's choice of gamemode
     while not mode:
-        if keyboard.is_pressed("escape"):
+        key = keyboard.read_key(suppress=True)
+        if key == "escape":
             sys.exit()
         # Display instructions
-        elif keyboard.is_pressed("i"):
+        elif key == "i":
             displayInstructions()
-            while not keyboard.is_pressed("backspace"):
+            while key != "backspace":
+                key = keyboard.read_key(suppress=True)
                 continue
 
             # Cross-platform terminal clearing taken from
@@ -38,10 +40,10 @@ def main():
             os.system("cls" if os.name == "nt" else "clear")
             displayStartScreen()
         # Enable player vs player mode
-        elif keyboard.is_pressed("p"):
+        elif key == "p":
             mode = "P"
         # Enable player vs computer mode
-        elif keyboard.is_pressed("c"):
+        elif key == "c":
             mode = "C"
 
     # Prompt user for computer opponent difficulty
