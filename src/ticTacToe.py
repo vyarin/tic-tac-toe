@@ -663,7 +663,6 @@ def playAgain():
     while key != "y":
         key = keyboard.read_key(suppress=True)
         if key == "escape":
-            # clear screen
             return False
     return True
 
