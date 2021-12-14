@@ -26,7 +26,7 @@ def main():
     # Check for player's choice of gamemode
     while not mode:
         key = keyboard.read_key(suppress=True)
-        if key == "escape":
+        if key == "esc":
             sys.exit()
         # Display instructions
         elif key == "i":
@@ -659,12 +659,12 @@ def playAgain():
         print(line.center(TERMINAL_COLUMNS))
 
     # Wait for player to input response
-    key = keyboard.read_key(suppress=True)
-    while key != "y":
+    while True:
         key = keyboard.read_key(suppress=True)
-        if key == "escape":
+        if key == "y":
+            return True
+        if key == "esc":
             return False
-    return True
 
 
 if __name__ == "__main__":
