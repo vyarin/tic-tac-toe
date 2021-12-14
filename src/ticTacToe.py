@@ -486,10 +486,10 @@ def displaygameGrid(grid):
     print("\n")
     print("{:>6}{:>6}{:>6}\n".format("a", "b", "c").center(
         TERMINAL_COLUMNS))
-    
+
     # Print tic-tac-toe grid with side labels
     for row in range(3):
-        # Substitute None values for spaces in order to format grid 
+        # Substitute None values for spaces in order to format grid
         # properly
         moves = [" " if not move else move for move in grid[row]]
         print("{1:>4}{0:>6}{0:>6}{1:>6}".format(
