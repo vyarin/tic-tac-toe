@@ -673,6 +673,15 @@ def playAgain():
 
 
 def randomMove(grid):
+    """Pick a legal random move on the tic-tac-toe grid
+
+    Args:
+        grid (list): 3x3 2D list representing tic-tac-toe grid
+
+    Returns:
+        tuple: Two indices representing a location on the grid
+    """
+    
     return choice(possibleMoves(grid))
 
 
