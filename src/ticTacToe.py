@@ -1,6 +1,7 @@
 import keyboard
 import os
 import re
+from random import choice
 import sys
 from time import sleep
 
@@ -57,7 +58,7 @@ def main():
         while not computerMode:
             key = keyboard.read_key(suppress=True)
             if key == "e":
-                computerMode = 3
+                computerMode = 1
             elif key == "m":
                 computerMode = 5
             elif key == "h":
@@ -175,7 +176,7 @@ def playerMove(grid):
 
 
 def computerMove(grid, mode):
-    """Determine best move
+    """Determine computer's move
 
     Args:
         grid (list): 3x3 2D list representing tic-tac-toe grid
@@ -191,7 +192,11 @@ def computerMove(grid, mode):
 
     # Determine best move
     player = nextPlayer(grid)
-    move = optimalMove(grid, player, mode)
+    
+    if mode == 1:
+        move = randomMove(grid)
+    else:
+        move = optimalMove(grid, player, mode)
 
     # Naturalize computer's determination of best move by inducing
     # delay
@@ -665,6 +670,10 @@ def playAgain():
             return True
         if key == "esc":
             return False
+
+
+def randomMove(grid):
+    return choice(possibleMoves(grid))
 
 
 if __name__ == "__main__":
